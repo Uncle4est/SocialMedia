@@ -22,12 +22,12 @@
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Login" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x5o-QR-XrT">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" textContentType="username"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="username"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hc2-I8-oMx">
                                         <rect key="frame" x="0.0" y="56" width="350" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -39,7 +39,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Forgot User Name?"/>
                                         <connections>
-                                            <action selector="nameReminder" destination="BYZ-38-t0r" eventType="touchUpInside" id="VQn-tg-p87"/>
+                                            <action selector="forgotRegistrationData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x6V-K1-QDw"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHk-kd-GvH">
@@ -47,7 +47,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Forgot Password?"/>
                                         <connections>
-                                            <action selector="passwordReminder" destination="BYZ-38-t0r" eventType="touchUpInside" id="JSp-2Z-0Fa"/>
+                                            <action selector="forgotRegistrationData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZXt-d6-79d"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -77,7 +77,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="eel-Da-2d4" kind="presentation" modalPresentationStyle="fullScreen" id="sJn-bq-pdE"/>
+                        <outlet property="loginTextFielf" destination="x5o-QR-XrT" id="sXm-6w-gaB"/>
+                        <outlet property="passwordTextFielf" destination="Hc2-I8-oMx" id="KJJ-kT-XEF"/>
+                        <segue destination="eel-Da-2d4" kind="presentation" identifier="loginForUser" modalPresentationStyle="fullScreen" id="sJn-bq-pdE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -101,6 +103,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Log out">
                                     <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle2"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <segue destination="MMI-L0-BFi" kind="unwind" unwindAction="unwindFor:" id="ehz-Hn-HIH"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="Wz8-5h-SNm">
                                 <rect key="frame" x="16" y="199" width="382" height="135"/>
@@ -136,8 +141,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="BrD-Ry-fBQ"/>
+                    <connections>
+                        <outlet property="userNameLabel" destination="SGr-Xf-KTb" id="r38-OQ-n9S"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fHJ-D8-uJT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="MMI-L0-BFi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="763.768115942029" y="-28.125"/>
         </scene>

@@ -9,43 +9,57 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    @IBOutlet var loginTextFielf: UITextField!
+    @IBOutlet var passwordTextFielf: UITextField!
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let welcomeVC = segue.destination as? WelcomeViewController else { return }
+        welcomeVC.userName = loginTextFielf.text
+    }
+    // Метод для скрытия клавиатуры тапом по экрану
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super .touchesBegan(touches, with: event)
+        view.endEditing(true)
     }
     
-    func newAlert(with title: String, and message: String) {
+    @IBAction func logInButtonPressed(_ sender: UIButton) {
+        if loginTextFielf.text == "User" && passwordTextFielf.text == "Password" {
+            performSegue(withIdentifier: "loginForUser", sender: nil)
+        } else {
+            passwordTextFielf.text = ""
+            showAlert(withTitle: "Invalid login or password", andMessage: "Please, enter correct login and password")
+        }
+    }
+    
+    @IBAction func forgotRegistrationData(_ sender: UIButton) {
+        sender.tag == 0
+        ? showAlert(withTitle: "Oops!", andMessage: "Your name is User 😉")
+        : showAlert(withTitle: "Oops!", andMessage: "Your password is Password 😉")
+    }
+    
+    @IBAction func unwind(for segue: UIStoryboardSegue) {
+        loginTextFielf.text = ""
+        passwordTextFielf.text = ""
+    }
+}
+
+extension LoginViewController {
+    func showAlert(withTitle title: String, andMessage message: String) {
         // Create new Alert
-        let dialogMessage = UIAlertController(
+        let alert = UIAlertController(
             title: title,
             message: message,
             preferredStyle: .alert
         )
         
         // Create OK button with action handler
-        let ok = UIAlertAction(
-            title: "OK",
-            style: .default,
-            handler: { (action) -> Void in
-            }
-        )
+        let ok = UIAlertAction(title: "OK", style: .default)
         
         //Add OK button to a dialog message
-        dialogMessage.addAction(ok)
+        alert.addAction(ok)
         
         // Present Alert to
-        self.present(dialogMessage, animated: true, completion: nil)
-    }
-    
-    @IBAction func logInButtonPressed(_ sender: UIButton) {
-    }
-    
-    @IBAction func nameReminder() {
-        newAlert(with: "Oops!", and: "Your name is User 😉")
-    }
-    
-    @IBAction func passwordReminder() {
-        newAlert(with: "Oops!", and: "Your password is Password 😉")
+        self.present(alert, animated: true)
     }
 }
 
