@@ -12,10 +12,25 @@ class LoginViewController: UIViewController {
     @IBOutlet var loginTextFielf: UITextField!
     @IBOutlet var passwordTextFielf: UITextField!
     
+    private let user = User.getProfile()
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let welcomeVC = segue.destination as? WelcomeViewController else { return }
-        welcomeVC.userName = loginTextFielf.text
+        guard let tabBarVC = segue.destination as? UITabBarController else { return }
+        guard let viewControllers = tabBarVC.viewControllers else { return }
+        
+        viewControllers.forEach {
+            if let welcomeVC = $0 as? WelcomeViewController {
+                welcomeVC.user = user
+            } else if let navigationVC = $0 as? UINavigationController {
+                let userInfoVC = navigationVC.topViewController
+                guard let userInfoVC = userInfoVC as? UserInfoViewController else {
+                    return
+                }
+                userInfoVC.user = user
+            }
+        }
     }
+    
     // Метод для скрытия клавиатуры тапом по экрану
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super .touchesBegan(touches, with: event)
@@ -23,18 +38,21 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func logInButtonPressed(_ sender: UIButton) {
-        if loginTextFielf.text == "User" && passwordTextFielf.text == "Password" {
+        if loginTextFielf.text == user.login && passwordTextFielf.text == user.password {
             performSegue(withIdentifier: "loginForUser", sender: nil)
         } else {
             passwordTextFielf.text = ""
-            showAlert(withTitle: "Invalid login or password", andMessage: "Please, enter correct login and password")
+            showAlert(
+                withTitle: "Invalid login or password",
+                andMessage: "Please, enter correct login and password"
+            )
         }
     }
     
     @IBAction func forgotRegistrationData(_ sender: UIButton) {
         sender.tag == 0
-        ? showAlert(withTitle: "Oops!", andMessage: "Your name is User 😉")
-        : showAlert(withTitle: "Oops!", andMessage: "Your password is Password 😉")
+        ? showAlert(withTitle: "Oops!", andMessage: "Your name is \(user.login) 😉")
+        : showAlert(withTitle: "Oops!", andMessage: "Your password is \(user.password) 😉")
     }
     
     @IBAction func unwind(for segue: UIStoryboardSegue) {

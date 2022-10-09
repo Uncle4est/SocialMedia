@@ -14,6 +14,10 @@
 		AB30EE8A28E9FB7100513E88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB30EE8928E9FB7100513E88 /* Assets.xcassets */; };
 		AB30EE8D28E9FB7100513E88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB30EE8B28E9FB7100513E88 /* LaunchScreen.storyboard */; };
 		AB30EE9528EA00B100513E88 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB30EE9428EA00B100513E88 /* WelcomeViewController.swift */; };
+		AB30EE9828EE094600513E88 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB30EE9728EE094600513E88 /* User.swift */; };
+		AB30EE9D28F2D55700513E88 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB30EE9C28F2D55700513E88 /* UserInfoViewController.swift */; };
+		AB30EE9F28F2D73700513E88 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB30EE9E28F2D73700513E88 /* InfoViewController.swift */; };
+		AB30EEA128F33E9000513E88 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB30EEA028F33E9000513E88 /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		AB30EE8C28E9FB7100513E88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB30EE8E28E9FB7100513E88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB30EE9428EA00B100513E88 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		AB30EE9728EE094600513E88 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AB30EE9C28F2D55700513E88 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
+		AB30EE9E28F2D73700513E88 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		AB30EEA028F33E9000513E88 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +66,52 @@
 		AB30EE7F28E9FB6F00513E88 /* SocialMedia */ = {
 			isa = PBXGroup;
 			children = (
-				AB30EE8028E9FB6F00513E88 /* AppDelegate.swift */,
-				AB30EE8228E9FB6F00513E88 /* SceneDelegate.swift */,
-				AB30EE8428E9FB6F00513E88 /* LoginViewController.swift */,
-				AB30EE8628E9FB6F00513E88 /* Main.storyboard */,
-				AB30EE9428EA00B100513E88 /* WelcomeViewController.swift */,
+				AB30EE9A28F2BB1500513E88 /* App */,
+				AB30EE9928EE094A00513E88 /* Models */,
+				AB30EE9628EE091900513E88 /* ViewControllers */,
+				AB30EE9B28F2BBF100513E88 /* StoryBoards */,
 				AB30EE8928E9FB7100513E88 /* Assets.xcassets */,
-				AB30EE8B28E9FB7100513E88 /* LaunchScreen.storyboard */,
-				AB30EE8E28E9FB7100513E88 /* Info.plist */,
 			);
 			path = SocialMedia;
+			sourceTree = "<group>";
+		};
+		AB30EE9628EE091900513E88 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AB30EE8428E9FB6F00513E88 /* LoginViewController.swift */,
+				AB30EE9428EA00B100513E88 /* WelcomeViewController.swift */,
+				AB30EE9C28F2D55700513E88 /* UserInfoViewController.swift */,
+				AB30EE9E28F2D73700513E88 /* InfoViewController.swift */,
+				AB30EEA028F33E9000513E88 /* TabBarController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		AB30EE9928EE094A00513E88 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AB30EE9728EE094600513E88 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AB30EE9A28F2BB1500513E88 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				AB30EE8028E9FB6F00513E88 /* AppDelegate.swift */,
+				AB30EE8228E9FB6F00513E88 /* SceneDelegate.swift */,
+				AB30EE8E28E9FB7100513E88 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		AB30EE9B28F2BBF100513E88 /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				AB30EE8628E9FB6F00513E88 /* Main.storyboard */,
+				AB30EE8B28E9FB7100513E88 /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,9 +185,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB30EE9D28F2D55700513E88 /* UserInfoViewController.swift in Sources */,
 				AB30EE8528E9FB6F00513E88 /* LoginViewController.swift in Sources */,
+				AB30EE9828EE094600513E88 /* User.swift in Sources */,
+				AB30EE9F28F2D73700513E88 /* InfoViewController.swift in Sources */,
 				AB30EE9528EA00B100513E88 /* WelcomeViewController.swift in Sources */,
 				AB30EE8128E9FB6F00513E88 /* AppDelegate.swift in Sources */,
+				AB30EEA128F33E9000513E88 /* TabBarController.swift in Sources */,
 				AB30EE8328E9FB6F00513E88 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,7 +341,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4NXQ8UZ7F9;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SocialMedia/Info.plist;
+				INFOPLIST_FILE = SocialMedia/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -324,7 +372,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4NXQ8UZ7F9;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SocialMedia/Info.plist;
+				INFOPLIST_FILE = SocialMedia/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
